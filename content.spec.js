@@ -12,32 +12,6 @@ beforeAll(() => {
     jQuery(document.body).append(jQuery(contentMockHtml));
 });
 
-test('should read publications', () => {
-    // Arrange
-    let publicationSectionExpanded = false;
-    spyOn(window.$.fn, click).and.callFake(() => publicationSectionExpanded = true);
-    spyOn(window.$.fn, attr).and.callFake(() => publicationSectionExpanded.toString());
-
-    // Act
-    const publications = content.readPublications(DUMMY_PROFILE);
-
-    // Assert
-    expect(publicationSectionExpanded).toBe(true);
-    expect(publications).toBeDefined();
-    expect(publications.length).toBeGreaterThan(0);
-
-    expect(publications[0].name).toBeDefined();
-    expect(publications[0].date).toBeDefined();
-    expect(publications[0].publisher).toBeDefined();
-    expect(publications[0].description).toBeDefined();
-    expect(publications[0].url).toBeDefined();
-    expect(publications[0].id).toBeDefined();
-
-    expect(publications[0].authors).toBeDefined();
-    expect(publications[0].authors.length).toBeGreaterThan(0);
-    expect(publications[0].authors[0]).toBe(DUMMY_PROFILE.name);
-});
-
 test('should read skills', () => {
     // Arrange
     let skillSectionExpanded = false;
